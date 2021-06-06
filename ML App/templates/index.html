@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seam Strength Analysis </title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+   <div
+   class="flex-1"
+   >
+     <div
+      style="margin-right:20px;"
+     >
+      <div
+        class="card-transparent"
+      >
+        <h3>Seam types codes:</h3>
+       <ul>
+         <li>1 = Super imposed Seam</li>
+         <li>2 = Super imposed seam with safety stitch</li>
+         <li>3 = Lap Seam</li>
+         <li>4 = Bound Seam</li>
+         <li>5 = French Seam</li>
+       </ul>
+      </div>
+      <div>
+       
+       </div>
+     </div>
+   </div>
+	<div
+   class="input-container card-transparent"
+  >
+    <h1>Seam Strength Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="ppi" placeholder="PPI" required="required" />
+        <input type="number" name="tex" placeholder="Tex" required="required" />
+		<input type="number" name="thread" placeholder="Thread Type" required="required" />
+        <input type="number" name="spi" placeholder="SPI" required="required" />
+        <input type="number" name="type" placeholder="Seam Type" required="required" />
+        <button type="submit" class="button">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+  </div>
+  <div
+    class="flex-1"
+  >
+  <div
+  style="display: flex; justify-content: flex-end;"
+  >
+  <div
+    class="card-transparent"
+  >
+    <h3>Thread Type codes:</h3>
+   <ul>
+     <li>1 = Spun Yarn</li>
+     <li>2 = Core Spun Yarn</li>
+   </ul>
+  </div>
+   </div>
+  </div>
+ </div>
+
+
+</body>
+</html>
